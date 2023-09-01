@@ -93,18 +93,22 @@ class _ExpenseTrackerState extends State<ExpensesTracker> {
         ],
       ),
       body: screenWidth < 600
-          ? Column(
-              children: [
-                Chart(expenses: _registeredExpenses),
-                Expanded(child: mainContent),
-              ],
-            )
-          : Row(
-              children: [
-                Expanded(child: Chart(expenses: _registeredExpenses)),
-                Expanded(child: mainContent),
-              ],
-            ),
+          ? SafeArea(
+            child: Column(
+                children: [
+                  Chart(expenses: _registeredExpenses),
+                  Expanded(child: mainContent),
+                ],
+              ),
+          )
+          : SafeArea(
+            child: Row(
+                children: [
+                  Expanded(child: Chart(expenses: _registeredExpenses)),
+                  Expanded(child: mainContent),
+                ],
+              ),
+          ),
     );
   }
 }
